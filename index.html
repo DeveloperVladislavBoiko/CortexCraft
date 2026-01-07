@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CortexCraft - Онлайн-школа подготовки к ЕГЭ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1A1A1A;
+            --secondary-bg: #2D2D2D;
+            --accent-teal: #00E5CC;
+            --text-white: #FFFFFF;
+            --text-gray: #B0B0B0;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Навигация */
+        header {
+            background-color: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            min-height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            white-space: nowrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-teal);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            background-color: #00c9b3;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 229, 204, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 229, 204, 0.1);
+            transform: translateY(-3px);
+        }
+.hero {
+    padding: 180px 0 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(0, 229, 204, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 229, 204, 0.05) 0%, transparent 20%);
+    z-index: -1;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center; /* ИЗМЕНЕНО: было flex-start, стало center */
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Для вертикального выравнивания */
+    align-items: center; /* ДОБАВЛЕНО: для горизонтального выравнивания по центру */
+}
+
+.hero-logo-side {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-align: center; /* Добавьте это, если заголовок тоже не по центру */
+}
+
+.hero h1 span {
+    color: var(--accent-teal);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    max-width: 600px;
+    text-align: center; /* ДОБАВЛЕНО: для выравнивания текста по центру */
+}
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Увеличенный квадратный логотип (уменьшен в 1.5 раза) */
+        .square-logo-container {
+            width: 533px; /* Уменьшено в 1.5 раза (было 800px) */
+            height: 533px; /* Уменьшено в 1.5 раза (было 800px) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .square-logo {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .square-logo-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-teal);
+            text-align: center;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .logo-subjects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .subject-tag {
+            background-color: rgba(0, 229, 204, 0.2);
+            color: var(--accent-teal);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid rgba(0, 229, 204, 0.5);
+            transition: var(--transition);
+        }
+
+        .subject-tag:hover {
+            background-color: rgba(0, 229, 204, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 229, 204, 0.3);
+        }
+
+        /* Блок с QR-кодом вверху - ИСПРАВЛЕНО ВЫРАВНИВАНИЕ */
+        .vk-community-promo {
+            display: flex;
+            align-items: center; /* Добавлено для вертикального выравнивания */
+            gap: 20px;
+            background-color: rgba(45, 45, 45, 0.7);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            max-width: fit-content;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .vk-community-promo i {
+            color: #4C75A3;
+            font-size: 1.8rem;
+        }
+
+        .vk-community-text {
+            flex: 1;
+        }
+
+        .vk-community-text span {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .vk-community-qr {
+            flex: 0 0 auto;
+        }
+
+        .small-qr-code {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .small-qr-code img {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .vk-community-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgba(76, 117, 163, 0.1);
+            color: #4C75A3;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid rgba(76, 117, 163, 0.3);
+        }
+
+        .vk-community-link:hover {
+            background-color: rgba(76, 117, 163, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Все остальные стили остаются без изменений... */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 15px;
+        }
+
+        .section-title span {
+            color: var(--accent-teal);
+        }
+
+        .advantages {
+            padding: 100px 0;
+            background-color: var(--secondary-bg);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 20px;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .advantage-card p {
+            color: var(--text-gray);
+        }
+
+        /* Направления подготовки */
+        .courses {
+            padding: 100px 0;
+        }
+
+        .courses-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background-color: var(--secondary-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            color: var(--text-white);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            min-width: 220px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-teal);
+            color: var(--dark-bg);
+            box-shadow: 0 5px 15px rgba(0, 229, 204, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(0, 229, 204, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .subject-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .subject-tab-btn {
+            padding: 12px 25px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .subject-tab-btn.active {
+            background-color: rgba(0, 229, 204, 0.2);
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        .subject-tab-btn:hover:not(.active) {
+            background-color: rgba(0, 229, 204, 0.1);
+            border-color: rgba(0, 229, 204, 0.3);
+        }
+
+        .courses-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .courses-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-card {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-teal);
+        }
+
+        .course-header {
+            background-color: rgba(0, 229, 204, 0.1);
+            padding: 30px;
+            border-bottom: 1px solid rgba(0, 229, 204, 0.2);
+            text-align: center;
+        }
+
+        .course-header h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-teal);
+        }
+
+        .course-header .course-description {
+            font-size: 1.2rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: var(--dark-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .course-body {
+            padding: 30px;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .course-features li {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            color: var(--text-white);
+            border-left: 3px solid var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-features i {
+            color: var(--accent-teal);
+            font-size: 1.2rem;
+        }
+
+        .course-action {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        /* Методология */
+        .methodology {
+            padding: 100px 0;
+            background-color: var(--secondary-bg);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(0, 229, 204, 0.3);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-teal);
+            color: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        /* Преподаватели */
+        .teachers {
+            padding: 100px 0;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .teacher-card {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .teacher-img {
+            height: 250px;
+            background-color: rgba(0, 229, 204, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent-teal);
+        }
+
+        .teacher-info {
+            padding: 25px;
+        }
+
+        .teacher-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .teacher-subject {
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Результаты */
+        .results {
+            padding: 100px 0;
+            background-color: var(--secondary-bg);
+        }
+
+        .results-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .reviews-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        .review-author {
+            font-weight: 600;
+        }
+
+        /* Сообщество */
+        .community-posts {
+            padding: 100px 0;
+            background-color: var(--dark-bg);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .post-card {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 229, 204, 0.15);
+            border-color: var(--accent-teal);
+        }
+
+        .post-header {
+            padding: 25px 25px 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .post-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent-teal);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .post-body {
+            padding: 20px 25px 25px 25px;
+        }
+
+        .post-body p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .post-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .post-link:hover {
+            gap: 12px;
+            color: #fff;
+        }
+
+        /* РЕАЛЬНЫЙ ПОСТ ИЗ ВК */
+        .real-vk-post {
+            margin-top: 60px;
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(76, 117, 163, 0.3);
+            overflow: hidden;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 229, 204, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--accent-teal);
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .post-date {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            padding: 25px;
+        }
+
+        .post-text {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .post-attachment {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .attachment-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-teal);
+        }
+
+        .vk-promo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+            padding: 40px;
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(76, 117, 163, 0.2);
+            text-align: center;
+        }
+
+        .vk-promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .qr-code {
+            flex: 0 0 auto;
+        }
+
+        /* РЕАЛЬНЫЙ QR-КОД */
+        .real-qr-code {
+            width: 180px;
+            height: 180px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .real-qr-code img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .vk-promo-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .vk-promo-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent-teal);
+        }
+
+        .vk-promo-text p {
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn-vk {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background-color: #4C75A3;
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .btn-vk:hover {
+            background-color: #3a5a80;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(76, 117, 163, 0.3);
+        }
+
+        /* Форма регистрации */
+        .registration {
+            padding: 100px 0;
+        }
+
+        .registration-container {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .registration-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-teal), #00a3ff);
+        }
+
+        .registration h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .registration p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-vk-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background-color: #4C75A3;
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+
+        .contact-vk-btn:hover {
+            background-color: #3a5a80;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(76, 117, 163, 0.3);
+        }
+
+        .contact-text {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(76, 117, 163, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(76, 117, 163, 0.2);
+        }
+
+        .contact-text p {
+            color: var(--text-white);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo img {
+            display: none;
+        }
+
+        .footer-about p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent-teal);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-bg);
+            border-radius: 50%;
+            color: var(--text-white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-teal);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .square-logo-container {
+                width: 467px; /* Уменьшено в 1.5 раза (было 700px) */
+                height: 467px; /* Уменьшено в 1.5 раза (было 700px) */
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            .hero {
+                padding: 200px 0 100px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 160px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center; /* Добавлено для мобильных */
+            }
+
+            .hero-text {
+                max-width: 100%;
+                justify-content: flex-start; /* Для мобильных устройств */
+            }
+
+            .hero-logo-side {
+                order: -1;
+                margin-bottom: 40px;
+            }
+
+            .square-logo-container {
+                width: 400px; /* Уменьшено в 1.5 раза (было 600px) */
+                height: 400px; /* Уменьшено в 1.5 раза (было 600px) */
+            }
+
+            .square-logo-content {
+                font-size: 2rem;
+            }
+
+            .logo-subtitle {
+                font-size: 1.7rem;
+            }
+
+            .vk-community-promo {
+                flex-direction: column;
+                text-align: center;
+                max-width: 100%;
+                margin: 30px auto 0;
+            }
+
+            .vk-community-text {
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+
+            .timeline-number {
+                left: 30px;
+            }
+
+            .vk-promo-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .vk-promo-text {
+                text-align: center;
+                min-width: auto;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 5px 10px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .logo-subjects {
+                justify-content: center;
+            }
+
+            .tab-btn {
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .square-logo-container {
+                width: 333px; /* Уменьшено в 1.5 раза (было 500px) */
+                height: 333px; /* Уменьшено в 1.5 раза (было 500px) */
+            }
+
+            .square-logo-content {
+                font-size: 1.8rem;
+            }
+
+            .logo-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .subject-tag {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                padding: 0 10px;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .registration-container {
+                padding: 40px 25px;
+            }
+
+            .registration h2 {
+                font-size: 2rem;
+            }
+
+            .results-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+                min-width: auto;
+            }
+
+            .subject-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .subject-tab-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .vk-promo {
+                padding: 30px 20px;
+            }
+
+            .btn-vk, .contact-vk-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .real-vk-post {
+                margin: 40px 0;
+            }
+
+            .logo-subjects {
+                gap: 10px;
+            }
+
+            .course-header h3 {
+                font-size: 1.8rem;
+            }
+
+            .course-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 140px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .square-logo-container {
+                width: 293px; /* Уменьшено в 1.5 раза (было 440px) */
+                height: 293px; /* Уменьшено в 1.5 раза (было 440px) */
+            }
+
+            .square-logo-content {
+                font-size: 1.5rem;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .small-qr-code {
+                width: 80px;
+                height: 80px;
+            }
+
+            .logo-subjects {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .subject-tag {
+                width: 100%;
+                text-align: center;
+            }
+
+            .course-header {
+                padding: 20px;
+            }
+
+            .course-body {
+                padding: 20px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .registration-container {
+                padding: 30px 20px;
+            }
+
+            .registration h2 {
+                font-size: 1.7rem;
+            }
+
+            .real-qr-code {
+                width: 150px;
+                height: 150px;
+            }
+
+            .square-logo-container {
+                width: 267px; /* Уменьшено в 1.5 раза (было 400px) */
+                height: 267px; /* Уменьшено в 1.5 раза (было 400px) */
+            }
+
+            .square-logo-content {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--dark-bg);
+            z-index: 999;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 15px;
+            color: var(--text-white);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent-teal);
+            background-color: rgba(0, 229, 204, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    CortexCraft
+                </a>
+
+                <div class="nav-links">
+                    <a href="#advantages">Преимущества</a>
+                    <a href="#courses">Направления</a>
+                    <a href="#methodology">Методология</a>
+                    <a href="#teachers">Преподаватели</a>
+                    <a href="#results">Результаты</a>
+                    <a href="#community">Сообщество</a>
+                </div>
+
+                <div class="nav-buttons">
+                    <a href="#contact" class="btn btn-primary">Связаться с нами</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#advantages">Преимущества</a>
+            <a href="#courses">Направления</a>
+            <a href="#methodology">Методология</a>
+            <a href="#teachers">Преподаватели</a>
+            <a href="#results">Результаты</a>
+            <a href="#community">Сообщество</a>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 20px; text-align: center;">Написать нам</a>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Текстовая часть слева -->
+                <div class="hero-text">
+                    <h1>Ваш проводник к <span>высоким баллам</span></h1>
+                    <p>Современная онлайн-школа. Эффективная подготовка к ЕГЭ и ОГЭ. Повышение успеваемости по математике, информатике и физике.</p>
+
+                    <div class="hero-buttons">
+                        <a href="#courses" class="btn btn-primary">Выбрать предмет</a>
+                        <a href="#contact" class="btn btn-secondary">Получить консультацию</a>
+                    </div>
+
+                    <div class="logo-subjects">
+                        <span class="subject-tag">ЕГЭ</span>
+                        <span class="subject-tag">ОГЭ</span>
+                        <span class="subject-tag">Успеваемость</span>
+                        <span class="subject-tag">Математика</span>
+                        <span class="subject-tag">Информатика</span>
+                        <span class="subject-tag">Физика</span>
+                    </div>
+
+                    <!-- БЛОК: QR-код и кнопка для сообщества ВК -->
+                    <div class="vk-community-promo">
+                        <div class="vk-community-text">
+                            <i class="fab fa-vk"></i>
+                            <span>Еще больше информации в нашем сообществе ВКонтакте!</span>
+                            <p>Присоединяйтесь, чтобы получать полезные материалы, разборы задач и общаться с преподавателями</p>
+                            <a href="https://vk.com/cortexcraftschool" target="_blank" class="vk-community-link">
+                                <i class="fab fa-vk"></i> Присоединиться к сообществу
+                            </a>
+                        </div>
+                        <div class="vk-community-qr">
+                            <div class="small-qr-code">
+                                <!-- QR-код для ссылки https://vk.com/cortexcraftschool -->
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://vk.com/cortexcraftschool" alt="QR-код для перехода в сообщество CortexCraft ВКонтакте">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Увеличенный в 2 раза квадратный логотип справа (уменьшен в 1.5 раза) -->
+                <div class="hero-logo-side">
+                    <div class="square-logo-container">
+                        <div class="square-logo">
+                            <!-- Единственный оставшийся логотип увеличенного размера (уменьшен в 1.5 раза) -->
+                            <img src="logo_square.png" alt="CortexCraft" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают <span>CortexCraft</span>?</h2>
+            <p class="section-subtitle">Мы объединяем лучшие методики преподавания с современными технологиями для максимального результата</p>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Адаптивная программа</h3>
+                    <p>Персональный план обучения, который подстраивается под ваш уровень и цели.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Бесплатное пробное занятие</h3>
+                    <p>Прекрасный способ убедиться в навыках и компетенции наших специалистов.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Наставники-мотиваторы</h3>
+                    <p>Эксперты, которые не только учат предмету, но и вдохновляют на достижение целей.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Фокус на экзамен и понимание</h3>
+                    <p>Учим не просто решать задачи, а понимать суть предмета для уверенности на экзамене.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Методические пособия от наших экспертов</h3>
+                    <p>Все материалы в одном месте: лекции, задания, видеоразборы и персональные рекомендации.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Cortex-сообщество</h3>
+                    <p>Поддержка, мотивация, разборы сложных задач и бесплатные файлы для подготовки в группе ВКонтакте.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Направления подготовки -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">Выберите свое <span>направление подготовки</span></h2>
+            <p class="section-subtitle">Подготовка к ЕГЭ и ОГЭ по ключевым техническим предметам с гарантией результата</p>
+
+            <!-- Верхние вкладки: ЕГЭ, ОГЭ, Повышение успеваемости -->
+            <div class="courses-tabs">
+                <button class="tab-btn active" data-tab="ege">ЕГЭ</button>
+                <button class="tab-btn" data-tab="oge">ОГЭ</button>
+                <button class="tab-btn" data-tab="improvement">Повышение успеваемости</button>
+            </div>
+
+            <!-- Нижние вкладки: Математика, Информатика, Физика (для ЕГЭ добавим Математика базовая) -->
+            <div class="subject-tabs">
+                <button class="subject-tab-btn active" data-subject="math">Математика Профильная</button>
+                <button class="subject-tab-btn" data-subject="informatics">Информатика</button>
+                <button class="subject-tab-btn" data-subject="physics">Физика</button>
+                <button class="subject-tab-btn" data-subject="math-base" style="display: none;">Математика Базовая</button>
+            </div>
+
+            <!-- Содержимое для ЕГЭ - Математика профиль -->
+            <div class="courses-content active" id="ege-math-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ЕГЭ</span>
+                        <h3>Математика профиль</h3>
+                        <p class="course-description">Сложные задачи, часть 2, Параметры</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Все задания 1-19</li>
+                            <li><i class="fas fa-check"></i> Параметры и теория чисел</li>
+                            <li><i class="fas fa-check"></i> Геометрия повышенной сложности</li>
+                            <li><i class="fas fa-check"></i> Разбор реальных вариантов ЕГЭ</li>
+                            <li><i class="fas fa-check"></i> Экономические задачи №17</li>
+                            <li><i class="fas fa-check"></i> Стереометрия и планиметрия</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ЕГЭ - Математика базовая -->
+            <div class="courses-content" id="ege-math-base-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ЕГЭ</span>
+                        <h3>Математика базовая</h3>
+                        <p class="course-description">Основные темы, подготовка к базовому экзамену</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Вся школьная программа</li>
+                            <li><i class="fas fa-check"></i> Простейшие уравнения и неравенства</li>
+                            <li><i class="fas fa-check"></i> Геометрия: планиметрия и стереометрия</li>
+                            <li><i class="fas fa-check"></i> Теория вероятностей и статистика</li>
+                            <li><i class="fas fa-check"></i> Тригонометрия для базового уровня</li>
+                            <li><i class="fas fa-check"></i> Практикум по решению типовых задач</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ЕГЭ - Информатика -->
+            <div class="courses-content" id="ege-informatics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ЕГЭ</span>
+                        <h3>Информатика</h3>
+                        <p class="course-description">Программирование, алгоритмы, логика</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Python для ЕГЭ</li>
+                            <li><i class="fas fa-check"></i> Алгоритмы и оптимизация</li>
+                            <li><i class="fas fa-check"></i> Задачи на логику и графы</li>
+                            <li><i class="fas fa-check"></i> Разбор КЕГЭ этого года</li>
+                            <li><i class="fas fa-check"></i> Базы данных</li>
+                            <li><i class="fas fa-check"></i> Системы счисления и кодирование</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ЕГЭ - Физика -->
+            <div class="courses-content" id="ege-physics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ЕГЭ</span>
+                        <h3>Физика</h3>
+                        <p class="course-description">Механика, термодинамика, электричество, оптика</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Механика: кинематика и динамика</li>
+                            <li><i class="fas fa-check"></i> Молекулярная физика и термодинамика</li>
+                            <li><i class="fas fa-check"></i> Электричество и магнетизм</li>
+                            <li><i class="fas fa-check"></i> Оптика и квантовая физика</li>
+                            <li><i class="fas fa-check"></i> Решение задач части С</li>
+                            <li><i class="fas fa-check"></i> Экспериментальные задания</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ОГЭ - Математика -->
+            <div class="courses-content" id="oge-math-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ОГЭ</span>
+                        <h3>Математика</h3>
+                        <p class="course-description">Полная подготовка к ОГЭ по математике</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Алгебраические выражения</li>
+                            <li><i class="fas fa-check"></i> Уравнения и неравенства</li>
+                            <li><i class="fas fa-check"></i> Функции и графики</li>
+                            <li><i class="fas fa-check"></i> Геометрия: планиметрия</li>
+                            <li><i class="fas fa-check"></i> Теория вероятностей и статистика</li>
+                            <li><i class="fas fa-check"></i> Вся вторая часть</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ОГЭ - Информатика -->
+            <div class="courses-content" id="oge-informatics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ОГЭ</span>
+                        <h3>Информатика</h3>
+                        <p class="course-description">Алгоритмы, программирование, логика</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Основы программирования на Python</li>
+                            <li><i class="fas fa-check"></i> Алгоритмы и блок-схемы</li>
+                            <li><i class="fas fa-check"></i> Логические выражения</li>
+                            <li><i class="fas fa-check"></i> Информационные модели</li>
+                            <li><i class="fas fa-check"></i> Файловая система и ОС</li>
+                            <li><i class="fas fa-check"></i> Базы данных</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для ОГЭ - Физика -->
+            <div class="courses-content" id="oge-physics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">ОГЭ</span>
+                        <h3>Физика</h3>
+                        <p class="course-description">Эксперименты, задачи, подготовка к ОГЭ</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Механика и термодинамика</li>
+                            <li><i class="fas fa-check"></i> Электричество и магнетизм</li>
+                            <li><i class="fas fa-check"></i> Экспериментальные задания</li>
+                            <li><i class="fas fa-check"></i> Практикум по решению задач</li>
+                            <li><i class="fas fa-check"></i> Оптические явления</li>
+                            <li><i class="fas fa-check"></i> Колебания и волны</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для Повышения успеваемости - Математика -->
+            <div class="courses-content" id="improvement-math-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">Повышение успеваемости</span>
+                        <h3>Математика</h3>
+                        <p class="course-description">Улучшение оценок, понимание школьной программы</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Ликвидация пробелов в знанияс</li>
+                            <li><i class="fas fa-check"></i> Индивидуальный подход к ученику</li>
+                            <li><i class="fas fa-check"></i> Разбор домашних заданий</li>
+                            <li><i class="fas fa-check"></i> Подготовка к контрольным работам</li>
+                            <li><i class="fas fa-check"></i> Развитие логического мышления</li>
+                            <li><i class="fas fa-check"></i> Устранение страха перед математикой</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для Повышения успеваемости - Информатика -->
+            <div class="courses-content" id="improvement-informatics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">Повышение успеваемости</span>
+                        <h3>Информатика</h3>
+                        <p class="course-description">Основы программирования, компьютерная грамотность</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Основы алгоритмизации</li>
+                            <li><i class="fas fa-check"></i> Программирование на Python</li>
+                            <li><i class="fas fa-check"></i> Компьютерные сети и интернет</li>
+                            <li><i class="fas fa-check"></i> Базы данных и информационные системы</li>
+                            <li><i class="fas fa-check"></i> Компьютерная графика и дизайн</li>
+                            <li><i class="fas fa-check"></i> Подготовка к школьным проектам</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Содержимое для Повышения успеваемости - Физика -->
+            <div class="courses-content" id="improvement-physics-content">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-tag">Повышение успеваемости</span>
+                        <h3>Физика</h3>
+                        <p class="course-description">Понимание физических явлений, решение задач</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Наглядное объяснение законов физики</li>
+                            <li><i class="fas fa-check"></i> Решение задач от простых к сложным</li>
+                            <li><i class="fas fa-check"></i> Физические эксперименты и опыты</li>
+                            <li><i class="fas fa-check"></i> Подготовка к лабораторным работам</li>
+                            <li><i class="fas fa-check"></i> Развитие физического мышления</li>
+                            <li><i class="fas fa-check"></i> Связь физики с реальной жизнью</li>
+                        </ul>
+                        <div class="course-action">
+                            <a href="#contact" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Записаться на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Методология -->
+    <section class="methodology" id="methodology">
+        <div class="container">
+            <h2 class="section-title">Как проходит <span>процесс обучения</span></h2>
+            <p class="section-subtitle">Шаг за шагом к максимальному результату на экзамене</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Диагностика</h3>
+                        <p>Определяем текущий уровень знаний и выявляем слабые места ученика.</p>
+                    </div>
+                    <div class="timeline-number">1</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Персональный план</h3>
+                        <p>Создаем индивидуальную траекторию обучения с фокусом на ваши цели.</p>
+                    </div>
+                    <div class="timeline-number">2</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Интерактивные занятия</h3>
+                        <p>Учимся через практику, интерактивные тренажеры и живое общение с наставником.</p>
+                    </div>
+                    <div class="timeline-number">3</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Необходимая теория</h3>
+                        <p>Преподаватель дает всю нужную теоритеческую базу для понимания предмета.</p>
+                    </div>
+                    <div class="timeline-number">4</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Разбор ошибок с наставником</h3>
+                        <p>Детальный анализ ошибок и работа над проблемными темами с экспертом.</p>
+                    </div>
+                    <div class="timeline-number">5</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Обратная связь и корректировка плана</h3>
+                        <p>Проверяем и корректируем модель обучения с учетом полученного опыта работы с учеником а также пожеланий по обучению.</p>
+                    </div>
+                    <div class="timeline-number">6</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преподаватели -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <h2 class="section-title">Наши <span>преподаватели</span></h2>
+            <p class="section-subtitle">Это лишь некоторые из наших экспертов. Все преподаватели CortexCraft — практикующие специалисты с подтверждёнными результатами</p>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Ксения Александровна</h3>
+                        <span class="teacher-subject">Математика</span>
+                        <p>Студентка Казанского Федерального Университета. Опыт преподавания — более 2-х лет.</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Владислав Евгеньевич</h3>
+                        <span class="teacher-subject">Информатика</span>
+                        <p>Python Разработчик в IT-компании. Студент Казанского Федерального Университета. Опыт преподавания более 3-х лет.</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Дарина Николаевна</h3>
+                        <span class="teacher-subject">Физика</span>
+                        <p>Олимпиадница. Автор методичек по подготовке к ЕГЭ по физике. Подготовила более 20-ти стобальников.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Результаты -->
+    <section class="results" id="results">
+        <div class="container">
+            <h2 class="section-title">Наши <span>результаты</span></h2>
+            <p class="section-subtitle">Цифры говорят сами за себя. Присоединяйтесь к нашим успешным выпускникам!</p>
+            <div class="results-stats">
+                <div class="stat-item">
+                    <div class="stat-number">85+</div>
+                    <div class="stat-text">Средний балл на ЕГЭ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-text">Поступление на бюджет</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-text">остались довольны</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-text">Стобалльников</div>
+                </div>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <p class="review-text">"После 10 класса я вообще не понимала, куда мне поступать. Родители настаивали на чем-то техническом. Я записалась в CortexCraft на пробные занятия по разным предметам: математика, информатика, физика.
+Мне не просто преподавали — со мной обсуждали, как эти знания применяются в реальных профессиях. После пары месяцев я наконец-то осознала, что хочу стать высококвалифицированным инженером. И мы сфокусировались именно на профильной математике и физике.
+
+Они помогли не только сдать ЕГЭ (оба предмета 80+), но и определиться с жизнью. Для меня это было ценнее всего. Сейчас учусь на первом курсе и не представляю, чтобы делала без моих преподаватель"</p>
+                    <p class="review-author">— Софья, выпускница 2024</p>
+                </div>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <p class="review-text">"Готовился к ЕГЭ по математике (профиль) и информатике с Владиславом Евгеньевичем. Когда пришел, был полный хаос в голове и куча пробелов. Система занятий очень четкая: от простого к сложному, без скачков. Особенно круто, что по информатике он не просто дает шаблоны для задач, а объясняет, как самому придумать алгоритм. Сдал на 87 и 89 баллов соответственно. Спасибо!."</p>
+                    <p class="review-author">— Юсеф, выпускник 2025</p>
+                </div>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <p class="review-text">"Хочу оставить искренний отзыв о репетиторе по математике Владиславе Евгеньевиче. Мы занимались целенаправленной подготовкой к ОГЭ по математике, и результатом более чем довольны!
+Владислав Евгеньевич — не просто преподаватель, который «натаскивает» на тесты. Он умеет объяснять сложные темы простым и понятным языком, давая именно глубокое понимание предмета, а не просто заучивание формул. На его занятиях всегда интересно! Всем, кто ищет сильного и увлеченного репетитора, очень рекомендую! 🩷"</p>
+                    <p class="review-author">— Айсылу, выпускница 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сообщество -->
+    <section class="community-posts" id="community">
+        <div class="container">
+            <h2 class="section-title">Полезные материалы в нашем <span>сообществе ВК</span></h2>
+            <p class="section-subtitle">Присоединяйтесь к нашему сообществу, где мы ежедневно публикуем полезные материалы, файлы для подготовки, разборы задач и отвечаем на ваши вопросы</p>
+
+            <!-- РЕАЛЬНЫЙ ПОСТ ИЗ ВК (на основе вашего сообщества) -->
+            <div class="real-vk-post">
+                <div class="post-author">
+                    <div class="author-avatar">
+                        <i class="fab fa-vk"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>CortexCraft | Подготовка к Школе, ЕГЭ и ОГЭ</h4>
+                        <div class="post-date">Сегодня в 14:30</div>
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <div class="post-text">
+                        <p>🔥 <strong>Специально для наших подписчиков!</strong> 🔥</p>
+                        <p>Только что выложили в сообщество новый PDF-файл: <strong>"БАЗОВАЯ МАТЕМАТИКА ЕГЭ 2026"</strong> — полный сборник всех необходимых формул и теории для успешной сдачи базового уровня.</p>
+                        <p>В файле собраны:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 15px;">
+                            <li>Все формулы по алгебре</li>
+                            <li>Геометрические теоремы и аксиомы</li>
+                            <li>Примеры типовых заданий с решениями</li>
+                            <li>Советы по распределению времени на экзамене</li>
+                        </ul>
+                        <p>Скачивайте, учитесь и готовьтесь к отличному результату! 📚✨</p>
+                    </div>
+
+                    <div class="post-attachment">
+                        <div class="attachment-title">
+                            <i class="far fa-file-pdf"></i> БАЗОВАЯ МАТЕМАТИКА ЕГЭ 2026 CortexCraft.pdf
+                        </div>
+                        <div style="color: var(--text-gray); font-size: 0.9rem;">
+                            952 КБ • Добавлено сегодня
+                        </div>
+                    </div>
+
+                    <a href="https://vk.com/cortexcraftschool" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-vk"></i> Перейти к посту в сообществе
+                    </a>
+                </div>
+            </div>
+
+            <!-- QR-код и большая кнопка -->
+            <div class="vk-promo">
+                <div class="vk-promo-content">
+                    <div class="qr-code">
+                        <!-- РЕАЛЬНЫЙ QR-КОД для вашего сообщества ВК -->
+                        <div class="real-qr-code">
+                            <!-- QR-код для ссылки https://vk.com/cortexcraftschool -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://vk.com/cortexcraftschool" alt="QR-код для перехода в сообщество CortexCraft ВКонтакте">
+                        </div>
+                    </div>
+                    <div class="vk-promo-text">
+                        <h3>Присоединяйтесь к нашему сообществу ВКонтакте!</h3>
+                        <p>Ежедневные полезные материалы, разборы задач, общение с преподавателями и другими учениками. Более 2000 участников уже с нами! Отсканируйте QR-код или нажмите кнопку ниже.</p>
+                        <a href="https://vk.com/cortexcraftschool" target="_blank" class="btn-vk">
+                            <i class="fab fa-vk"></i> Перейти в сообщество ВК
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная форма -->
+    <section class="registration" id="contact">
+        <div class="container">
+            <div class="registration-container">
+                <h2>Свяжитесь с нами в ВКонтакте!</h2>
+                <p>Для быстрой связи и консультации напишите нам в сообщения сообщества ВКонтакте. Мы ответим вам ближайшее время.</p>
+
+                <div class="contact-text">
+                    <p>📱 <strong>Запишитесь на БЕСПЛАТНОЕ ПРОБНОЕ ЗАНЯТИЕ через ВКонтакте и мы ответим на все ваши вопросы:</strong></p>
+                    <p>1. Нажмите кнопку ниже либо переходите по qr коду</p>
+                    <p>2. Напишите,что хотите узнать либо на какое занятие желаете попасть</p>
+                    <p>3. Укажите ваше ФИО и направление подготовки</p>
+                    <p>4. Отправьте сообщение - мы ответим вам в ближайшее время!</p>
+                </div>
+
+                <!-- ИСПРАВЛЕННАЯ КНОПКА ДЛЯ СООБЩЕНИЙ ВК -->
+                <a href="https://vk.me/cortexcraftschool?ref=community&message=Здравствуйте!%20Хочу%20записаться%20на%20консультацию%20по%20подготовке%20к%20ЕГЭ/ОГЭ.%20Меня%20зовут%20[Введите%20ваше%20имя].%20Интересует%20предмет:%20[Математика/Информатика/Физика]"
+                   target="_blank"
+                   class="contact-vk-btn">
+                    <i class="fab fa-vk"></i> Написать нам в ВК
+                </a>
+
+                <p style="margin-top: 30px; color: var(--text-gray); font-size: 0.9rem;">
+                    Или отсканируйте QR-код выше и напишите нам в сообщения сообщества
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <!-- Логотип удален -->
+                    </a>
+                    <p>Онлайн-школа нового поколения. Готовим к ЕГЭ, ОГЭ и повышаем успеваемость по математике, информатике и физике.</p>
+                    <div class="social-links">
+                        <a href="https://vk.com/cortexcraftschool" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="#advantages">Преимущества</a></li>
+                        <li><a href="#courses">Направления</a></li>
+                        <li><a href="#methodology">Методология</a></li>
+                        <li><a href="#teachers">Преподаватели</a></li>
+                        <li><a href="#results">Результаты</a></li>
+                        <li><a href="#community">Сообщество</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Контакты</h3>
+                    <p><i class="fab fa-vk"></i> vk.com/cortexcraftschool</p>
+                    <p><i class="fas fa-phone"></i> +7 (999) 257-57-33</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Онлайн по всей России</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 10:00-20:00, Сб: 11:00-18:00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>CortexCraft. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Закрыть меню при клике на ссылку
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Переключение верхних вкладок (ЕГЭ, ОГЭ, Повышение успеваемости)
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const subjectTabButtons = document.querySelectorAll('.subject-tab-btn');
+        const mathBaseBtn = document.querySelector('[data-subject="math-base"]');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Убираем активный класс со всех верхних кнопок
+                tabButtons.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс нажатой кнопке
+                this.classList.add('active');
+
+                // Получаем id вкладки
+                const tab = this.getAttribute('data-tab');
+
+                // Скрываем все содержимое вкладок
+                document.querySelectorAll('.courses-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Показываем кнопку "Математика базовая" только для ЕГЭ
+                if (tab === 'ege') {
+                    mathBaseBtn.style.display = 'inline-block';
+                } else {
+                    mathBaseBtn.style.display = 'none';
+                }
+
+                // Сбрасываем активный предмет на "Математика"
+                subjectTabButtons.forEach(subBtn => subBtn.classList.remove('active'));
+
+                // Для ЕГЭ показываем "Математика Профильная", для остальных - просто "Математика"
+                if (tab === 'ege') {
+                    subjectTabButtons[0].textContent = "Математика Профильная";
+                    subjectTabButtons[0].setAttribute('data-subject', 'math');
+                } else if (tab === 'oge' || tab === 'improvement') {
+                    subjectTabButtons[0].textContent = "Математика";
+                    subjectTabButtons[0].setAttribute('data-subject', 'math');
+                }
+
+                subjectTabButtons[0].classList.add('active');
+
+                // Показываем соответствующий контент
+                const activeContent = document.getElementById(`${tab}-math-content`);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
+            });
+        });
+
+        // Переключение нижних вкладок (Математика, Информатика, Физика, Математика базовая)
+        subjectTabButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Получаем активную верхнюю вкладку
+                const activeTab = document.querySelector('.tab-btn.active');
+                if (!activeTab) return;
+
+                const tab = activeTab.getAttribute('data-tab');
+                const subject = this.getAttribute('data-subject');
+
+                // Убираем активный класс со всех нижних кнопок
+                subjectTabButtons.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс нажатой кнопке
+                this.classList.add('active');
+
+                // Скрываем все содержимое вкладок
+                document.querySelectorAll('.courses-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Показываем соответствующий контент
+                const activeContent = document.getElementById(`${tab}-${subject}-content`);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
+            });
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Фиксация шапки
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Адаптация меню
+        function checkMenu() {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.nav-links').style.display = 'none';
+                document.querySelector('.mobile-menu-btn').style.display = 'block';
+            } else {
+                document.querySelector('.nav-links').style.display = 'flex';
+                document.querySelector('.mobile-menu-btn').style.display = 'none';
+                mobileMenu.classList.remove('active');
+            }
+        }
+
+        window.addEventListener('resize', checkMenu);
+        window.addEventListener('load', checkMenu);
+
+        // Инициализация - показываем первую вкладку по умолчанию
+        document.addEventListener('DOMContentLoaded', function() {
+            // Скрываем кнопку "Математика базовая" по умолчанию
+            mathBaseBtn.style.display = 'none';
+
+            // Устанавливаем правильные названия для кнопок
+            const firstTabBtn = document.querySelector('.tab-btn.active');
+            if (firstTabBtn && firstTabBtn.getAttribute('data-tab') === 'ege') {
+                subjectTabButtons[0].textContent = "Математика Профильная";
+            }
+
+            // Показываем первую вкладку (ЕГЭ - Математика)
+            document.querySelector('.tab-btn.active').click();
+            document.querySelector('.subject-tab-btn.active').click();
+        });
+    </script>
+</body>
+</html>
